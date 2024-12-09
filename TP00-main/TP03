@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct element {
+    int val;
+    struct element* suivant;
+} element;
+
+
+element* creerListe() {
+    return NULL; 
+}
+
+int i ;
+element* chargerListe(int Tab[], int size, element* liste) {
+    for (i = 0; i < size; i++) {
+        element* nouveau = (element*)malloc(sizeof(element));
+        if (nouveau == NULL) {
+            printf("error\n");
+            exit(1);
+        }
+        nouveau->val = Tab[i];
+        nouveau->suivant = liste;
+        liste = nouveau;
+    }
+    return liste;
+}
+
+
+void afficherListe(element* liste) {
+    element* courant = liste;
+    while (courant != NULL) {
+        printf("%d -> ", courant->val);
+        courant = courant->suivant;
+    }
+    printf("NULL\n");
+}
+
+
+element* supprimerEnFin(element* liste) {
+    if (liste == NULL) return NULL; 
+    if (liste->suivant == NULL) { 
+        free(liste);
+        return NULL;
+    }
+
+    element* courant = liste;
+    while (courant->suivant->suivant != NULL) {
+        courant = courant->suivant;
+    }
+    free(courant->suivant);
+    courant->suivant = NULL;
+    return liste;
+}
+
+
+element* ajouterEnDebut(element* liste, int valeur) {
+    element* nouveau = (element*)malloc(sizeof(element));
+    if (nouveau == NULL) {
+        printf("error\n");
+        exit(1);
+    }
+    nouveau->val = valeur;
+    nouveau->suivant = liste;
+    return nouveau;
+}
+
+
+void viderListe(element* liste) {
+    element* courant = liste;
+    while (courant != NULL) {
+        element* temp = courant;
+        courant = courant->suivant;
+        free(temp);
+    }
+    printf("empty liste \n");
+}
+
+int main() {
+    int Tab[10] = {1, 3, 5, 7, 8, 10, 9, 11, 13, 20};
+
+  
+    element* liste = creerListe();
+
+  
+    liste = chargerListe(Tab, 10, liste);
+
+ 
+    printf("liste:\n");
+    afficherListe(liste);
+
+  
+    liste = supprimerEnFin(liste);
+    printf("liste now:\n");
+    afficherListe(liste);
+
+  
+    liste = ajouterEnDebut(liste, 40);
+    printf("liste after add 40\n");
+    afficherListe(liste);
+
+
+    viderListe(liste);
+
+    return 0;
+}
