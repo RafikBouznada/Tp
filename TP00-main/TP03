@@ -73,7 +73,7 @@ void viderListe(element* liste) {
         courant = courant->suivant;
         free(temp);
     }
-    printf("empty liste \n");
+    printf("list est vide \n");
 }
 
 int main() {
