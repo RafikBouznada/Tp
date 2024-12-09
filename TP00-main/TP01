@@ -12,7 +12,7 @@ int main() {
 
    int i;
    int j;
-    printf("elmsfofa:\n");
+    printf("la matrice :\n");
     for ( i = 0; i < 5; i++) {
         for (j = 0; j < 5; j++) {
             printf("%c ", matrix[i][j]);
@@ -21,7 +21,7 @@ int main() {
     }
 
     
-    printf("\n sfof zwjia:\n");
+    printf("\n constituee uniquement d indice pair :\n");
     for (i = 0; i < 5; i += 2) { 
         for (j = 0; j < 5; j++) {
             printf("%c ", matrix[i][j]);
@@ -29,7 +29,7 @@ int main() {
         printf("\n");
     }
 
-    printf("\ elfrdia:\n");
+    printf("\ constituee uniquement d elements d indice impair de chaque lign :\n");
     for (i = 0; i < 5; i++) {
         for (j = 1; j < 5; j += 2) {
             printf("%c ", matrix[i][j]);
@@ -38,7 +38,7 @@ int main() {
     }
 
     
-    printf("\n el9otr:\n");
+    printf("\n diagonale:\n");
     for (i = 0; i < 5; i++) {
         printf("%c ", matrix[i][i]);
     }
